@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="22px" viewBox="0 0 20 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-14.000000, -9.000000)" fill="#4D4D4D">
+            <g id="Group" transform="translate(14.000000, 9.000000)">
+                <path d="M10,0 L10,0 C14.9705627,-9.13077564e-16 19,4.02943725 19,9 L19,17 L1,17 L1,9 C1,4.02943725 5.02943725,9.13077564e-16 10,0 Z" id="Rectangle"></path>
+                <rect id="Rectangle" x="0" y="17" width="20" height="2" rx="1"></rect>
+                <ellipse id="Oval" cx="10" cy="18.5" rx="3" ry="3.5"></ellipse>
+            </g>
+        </g>
+    </g>
+</svg>

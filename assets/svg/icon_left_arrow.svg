@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="25px" height="28px" viewBox="0 0 25 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-11.000000, -9.000000)" fill="#4D4D4D">
+            <path d="M23.0971162,34.4839384 L37.1861934,12.7496061 C37.4866087,12.2861742 37.3544578,11.6669537 36.8910259,11.3665384 C36.7290388,11.2615317 36.5401205,11.205656 36.3470758,11.205656 L10.8418588,11.205656 C10.289574,11.205656 9.84185875,11.6533712 9.84185875,12.205656 C9.84185875,12.3676627 9.88121972,12.5272439 9.95655501,12.6706692 L21.3726949,34.4050015 C21.6295146,34.8939413 22.2340721,35.0821118 22.7230118,34.8252921 C22.8749371,34.745492 23.00377,34.6279378 23.0971162,34.4839384 Z" id="Rectangle" transform="translate(23.594526, 23.072924) rotate(90.000000) translate(-23.594526, -23.072924) "></path>
+        </g>
+    </g>
+</svg>
