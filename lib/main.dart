@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:tripyojana/screens/home_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:tripyojana/screens/login_page.dart';
-import 'package:tripyojana/screens/sign_in_page.dart';
 import 'package:tripyojana/utils/authentication_service.dart';
 
 Future<void> main() async {
@@ -12,16 +11,6 @@ Future<void> main() async {
   await Firebase.initializeApp();
   runApp(MyApp());
 }
-
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       home: HomeScreen(),
-//     );
-//   }
-// }
 
 class MyApp extends StatelessWidget {
   @override
@@ -37,7 +26,6 @@ class MyApp extends StatelessWidget {
         )
       ],
       child: MaterialApp(
-        // title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,

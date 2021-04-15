@@ -1,4 +1,3 @@
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -26,7 +25,7 @@ class SelectedPlaceScreen extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               children: List.generate(
                 recommendedModel.images.length,
-                    (int index) => Container(
+                (int index) => Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       fit: BoxFit.cover,
@@ -47,7 +46,7 @@ class SelectedPlaceScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         Navigator.of(context).pop();
                       },
                       child: Container(
@@ -58,7 +57,8 @@ class SelectedPlaceScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(9.6),
                           color: Color(0x10000000),
                         ),
-                        child: SvgPicture.asset('assets/svg/icon_left_arrow.svg'),
+                        child:
+                            SvgPicture.asset('assets/svg/icon_left_arrow.svg'),
                       ),
                     ),
                     Container(
@@ -69,7 +69,8 @@ class SelectedPlaceScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(9.6),
                         color: Color(0x10000000),
                       ),
-                      child: SvgPicture.asset('assets/svg/icon_heart_colored.svg'),
+                      child:
+                          SvgPicture.asset('assets/svg/icon_heart_colored.svg'),
                     )
                   ],
                 ),
@@ -101,7 +102,8 @@ class SelectedPlaceScreen extends StatelessWidget {
                         recommendedModel.tagLine,
                         maxLines: 2,
                         style: GoogleFonts.playfairDisplay(
-                            fontSize: 42.6, fontWeight: FontWeight.w700,
+                            fontSize: 42.6,
+                            fontWeight: FontWeight.w700,
                             color: Colors.white),
                       ),
                     ),

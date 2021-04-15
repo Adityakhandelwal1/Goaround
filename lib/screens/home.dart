@@ -6,7 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:tripyojana/models/recommended_model.dart';
 import 'package:tripyojana/screens/selected_place_screen.dart';
-import 'package:tripyojana/widgets/custom_tab_indicator.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -86,6 +85,9 @@ class _NestedTabBarState extends State<Home> with TickerProviderStateMixin {
           child: DefaultTabController(
             length: 4,
             child: TabBar(
+              indicator: UnderlineTabIndicator(
+                borderSide: BorderSide(width: 2.0, color: Colors.black),
+              ),
               labelPadding: EdgeInsets.only(left: 14.4, right: 14.4),
               indicatorPadding: EdgeInsets.only(left: 14.4, right: 14.4),
               isScrollable: true,
@@ -95,10 +97,10 @@ class _NestedTabBarState extends State<Home> with TickerProviderStateMixin {
                   GoogleFonts.lato(fontSize: 14, fontWeight: FontWeight.w700),
               unselectedLabelStyle:
                   GoogleFonts.lato(fontSize: 14, fontWeight: FontWeight.w700),
-              indicator: RoundedRectangleTabIndicator(
-                  color: Color(0xFF000000), weight: 2.4, width: 14.4),
+              indicatorWeight: 1.4,
+              // indicatorSize: TabBarIndicatorSize.label,
               controller: _nestedTabController,
-              indicatorColor: Colors.teal,
+              indicatorColor: Colors.black,
               tabs: <Widget>[
                 Tab(
                   text: "Recommended",
