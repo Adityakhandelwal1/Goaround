@@ -3,21 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>877762384475-hlsk10974r2rlbc7c8qdnv4qtf80v3m8.apps.googleusercontent.com</string>
+	<string>762289931580-mlrn2b3i59j8jmehfllrnng2ih017d0b.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.877762384475-hlsk10974r2rlbc7c8qdnv4qtf80v3m8</string>
+	<string>com.googleusercontent.apps.762289931580-mlrn2b3i59j8jmehfllrnng2ih017d0b</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>762289931580-moq9cfrhnpoifo85nbrsplsj7rnj1vir.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyATMxSCV_2seYYgm7qsALPdii5daU2L_9A</string>
+	<string>AIzaSyCe41IHG8QdlqMqreIdSGPHKApOAhIRh7c</string>
 	<key>GCM_SENDER_ID</key>
-	<string>877762384475</string>
+	<string>762289931580</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.nova.tripyojana</string>
+	<string>com.goaround.goaroundapp</string>
 	<key>PROJECT_ID</key>
-	<string>tripyojana</string>
+	<string>goaround-b5b2b</string>
 	<key>STORAGE_BUCKET</key>
-	<string>tripyojana.appspot.com</string>
+	<string>goaround-b5b2b.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:877762384475:ios:70b0d5a7cacd40b01fa57e</string>
+	<string>1:762289931580:ios:f426bc23fae72190ebca39</string>
 </dict>
 </plist>

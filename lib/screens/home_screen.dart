@@ -81,7 +81,10 @@ class _MyHomePageState extends State<HomeScreen> with TickerProviderStateMixin {
       body: TabBarView(
         children: <Widget>[
           Home(),
-          NestedTabBar(),
+          // NestedTabBar(),
+          Center(
+            child: Text("Favourites"),
+          ),
           Center(
             child: Text("Notifications"),
           ),

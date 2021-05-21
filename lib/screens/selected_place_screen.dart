@@ -1,16 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:tripyojana/models/recommended_model.dart';
+import 'package:tripyojana/models/activities_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class SelectedPlaceScreen extends StatelessWidget {
   final _pageController = PageController();
 
-  final RecommendedModel recommendedModel;
+  final ActivitiesModel activitiesModel;
 
-  SelectedPlaceScreen({Key key, @required this.recommendedModel})
+  SelectedPlaceScreen({Key key, @required this.activitiesModel})
       : super(key: key);
 
   @override
@@ -24,13 +24,13 @@ class SelectedPlaceScreen extends StatelessWidget {
               controller: _pageController,
               scrollDirection: Axis.horizontal,
               children: List.generate(
-                recommendedModel.images.length,
+                activitiesModel.images.length,
                 (int index) => Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       fit: BoxFit.cover,
                       image: CachedNetworkImageProvider(
-                          recommendedModel.images[index]),
+                          activitiesModel.images[index]),
                     ),
                   ),
                 ),
@@ -88,7 +88,7 @@ class SelectedPlaceScreen extends StatelessWidget {
                   children: <Widget>[
                     SmoothPageIndicator(
                       controller: _pageController,
-                      count: recommendedModel.images.length,
+                      count: activitiesModel.images.length,
                       effect: ExpandingDotsEffect(
                           activeDotColor: Color(0xFFFFFFFF),
                           dotColor: Color(0xFFababab),
@@ -99,7 +99,7 @@ class SelectedPlaceScreen extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(top: 19.2),
                       child: Text(
-                        recommendedModel.tagLine,
+                        activitiesModel.tagLine,
                         maxLines: 2,
                         style: GoogleFonts.playfairDisplay(
                             fontSize: 42.6,
@@ -110,7 +110,7 @@ class SelectedPlaceScreen extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(top: 19.2),
                       child: Text(
-                        recommendedModel.description,
+                        activitiesModel.description,
                         maxLines: 3,
                         style: GoogleFonts.lato(
                             fontSize: 19.2,
@@ -136,7 +136,7 @@ class SelectedPlaceScreen extends StatelessWidget {
                                   color: Colors.white),
                             ),
                             Text(
-                              '\₹ ${recommendedModel.price.toString()} / person',
+                              '\₹ ${activitiesModel.price.toString()} / person',
                               style: GoogleFonts.lato(
                                   fontSize: 21.6,
                                   fontWeight: FontWeight.w700,

@@ -49,6 +49,10 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
+    final TextEditingController passwordController2 = TextEditingController();
+    final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+    final GlobalKey<FormState> _formkey2 = GlobalKey<FormState>();
+
     windowHeight = MediaQuery.of(context).size.height;
     windowWidth = MediaQuery.of(context).size.width;
 
@@ -112,7 +116,8 @@ class _LoginPageState extends State<LoginPage> {
               decoration: new BoxDecoration(
                 image: new DecorationImage(
                   image: new AssetImage('assets/images/background.jpeg'),
-                  colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.dstATop),
+                  colorFilter: new ColorFilter.mode(
+                      Colors.black.withOpacity(0.2), BlendMode.dstATop),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -125,7 +130,10 @@ class _LoginPageState extends State<LoginPage> {
                     child: Text(
                       'Welcome!',
                       textAlign: TextAlign.center,
-                      style: GoogleFonts.lato(fontSize: 45.6,color: _headingColor, fontWeight: FontWeight.w400),
+                      style: GoogleFonts.lato(
+                          fontSize: 45.6,
+                          color: _headingColor,
+                          fontWeight: FontWeight.w400),
                     ),
                   ),
                   //Get Started Button
@@ -160,135 +168,157 @@ class _LoginPageState extends State<LoginPage> {
               )),
           //login page
           AnimatedContainer(
-            padding: EdgeInsets.all(32),
-            width: _loginWidth,
-            height: _loginHeight,
-            curve: Curves.fastLinearToSlowEaseIn,
-            duration: Duration(milliseconds: 1000),
-            transform:
-                Matrix4.translationValues(_loginXOffset, _loginYOffset, 1),
-            decoration: BoxDecoration(
-                color: Colors.white.withOpacity(_loginOpacity),
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(25),
-                    topRight: Radius.circular(25))),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Column(
+              padding: EdgeInsets.all(32),
+              width: _loginWidth,
+              height: _loginHeight,
+              curve: Curves.fastLinearToSlowEaseIn,
+              duration: Duration(milliseconds: 1000),
+              transform:
+                  Matrix4.translationValues(_loginXOffset, _loginYOffset, 1),
+              decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(_loginOpacity),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(25),
+                      topRight: Radius.circular(25))),
+              child: Form(
+                key: _formkey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
+                    Column(
+                      children: <Widget>[
+                        Container(
+                          margin: EdgeInsets.only(bottom: 20),
+                          child: Text(
+                            "Login To Continue",
+                            style: TextStyle(fontSize: 20),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        TextFormField(
+                          keyboardType: TextInputType.text,
+                          textAlign: TextAlign.center,
+                          decoration: new InputDecoration(
+                              hintText: "Email",
+                              contentPadding: const EdgeInsets.all(20.0)),
+                          controller: emailController,
+                          validator: (String value) {
+                            if (value.isEmpty) {
+                              return 'Please Enter an Email';
+                            }
+                            return null;
+                          },
+                        ),
+                        TextFormField(
+                          keyboardType: TextInputType.text,
+                          autofocus: false,
+                          obscureText: true,
+                          textAlign: TextAlign.center,
+                          controller: passwordController,
+                          decoration: new InputDecoration(
+                              hintText: "Password",
+                              contentPadding: const EdgeInsets.all(20.0)),
+                          validator: (String value) {
+                            if (value.isEmpty) {
+                              return 'Please Enter a Password';
+                            }
+                            return null;
+                          },
+                        ),
+                      ],
+                    ),
+
+                    //SignIn and Create New Account button
                     Container(
-                      margin: EdgeInsets.only(bottom: 20),
-                      child: Text(
-                        "Login To Continue",
-                        style: TextStyle(fontSize: 20),
-                      ),
+                      child: Column(children: [
+                        MaterialButton(
+                          onPressed: () {
+                            if (_formkey.currentState.validate()) {
+                              context.read<AuthenticationService>().signIn(
+                                    email: emailController.text.trim(),
+                                    password: passwordController.text.trim(),
+                                  );
+                            } else {
+                              print("UnSuccessfull");
+                            }
+                          },
+                          child: Container(
+                            height: 62.4,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(9.6),
+                              color: Color(0xFF000000),
+                            ),
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Padding(
+                                padding:
+                                    EdgeInsets.only(left: 28.8, right: 28.8),
+                                child: Text(
+                                  'Sign in',
+                                  style: GoogleFonts.lato(
+                                      fontSize: 19.2,
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.white),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        MaterialButton(
+                          onPressed: () {
+                            setState(() {
+                              _pageState = 2;
+                            });
+                          },
+                          child: Container(
+                            height: 62.4,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(9.6),
+                                color: Colors.white),
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Padding(
+                                padding:
+                                    EdgeInsets.only(left: 28.8, right: 28.8),
+                                child: Text(
+                                  'New Account?',
+                                  style: GoogleFonts.lato(
+                                      fontSize: 19.2,
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.black),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ]),
                     ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    TextField(
-                      textAlign: TextAlign.center,
-                      decoration: new InputDecoration(
-                          hintText: "Email",
-                          contentPadding: const EdgeInsets.all(20.0)),
-                      controller: emailController,
-                    ),
-                    TextField(
-                      autofocus: false,
-                      obscureText: true,
-                      textAlign: TextAlign.center,
-                      controller: passwordController,
-                      decoration: new InputDecoration(
-                          hintText: "Password",
-                          contentPadding: const EdgeInsets.all(20.0)),
-                    ),
+
+                    // Column(
+                    //   children: <Widget>[
+                    //     PrimaryButton(
+                    //       btnText: "Login",
+                    //     ),
+                    //     SizedBox(
+                    //       height: 20,
+                    //     ),
+                    //     GestureDetector(
+                    //       onTap: () {
+                    //         setState(() {
+                    //           _pageState = 2;
+                    //         });
+                    //       },
+                    //       child: OutlineBtn(
+                    //         btnText: "Create New Account",
+                    //       ),
+                    //     )
+                    //   ],
+                    // ),
                   ],
                 ),
-
-                //SignIn and Create New Account button
-                Container(
-                  child: Column(children: [
-                    MaterialButton(
-                      onPressed: () {
-                        context.read<AuthenticationService>().signIn(
-                              email: emailController.text.trim(),
-                              password: passwordController.text.trim(),
-                            );
-                      },
-                      child: Container(
-                        height: 62.4,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(9.6),
-                            color: Color(0xFF000000),
-                        ),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Padding(
-                            padding: EdgeInsets.only(left: 28.8, right: 28.8),
-                            child: Text(
-                              'Sign in',
-                              style: GoogleFonts.lato(
-                                  fontSize: 19.2,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.white),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    MaterialButton(
-                      onPressed: () {
-                        setState(() {
-                          _pageState = 2;
-                        });
-                      },
-                      child: Container(
-                        height: 62.4,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(9.6),
-                            color: Colors.white),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Padding(
-                            padding: EdgeInsets.only(left: 28.8, right: 28.8),
-                            child: Text(
-                              'New Account?',
-                              style: GoogleFonts.lato(
-                                  fontSize: 19.2,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.black),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ]),
-                ),
-
-                // Column(
-                //   children: <Widget>[
-                //     PrimaryButton(
-                //       btnText: "Login",
-                //     ),
-                //     SizedBox(
-                //       height: 20,
-                //     ),
-                //     GestureDetector(
-                //       onTap: () {
-                //         setState(() {
-                //           _pageState = 2;
-                //         });
-                //       },
-                //       child: OutlineBtn(
-                //         btnText: "Create New Account",
-                //       ),
-                //     )
-                //   ],
-                // ),
-              ],
-            ),
-          ),
+              )),
           //signup page
           AnimatedContainer(
             height: _registerHeight,
@@ -301,87 +331,147 @@ class _LoginPageState extends State<LoginPage> {
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(25),
                     topRight: Radius.circular(25))),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    Container(
-                      margin: EdgeInsets.only(bottom: 20),
-                      child: Text(
-                        "Create a New Account",
-                        style: TextStyle(fontSize: 20),
+            child: Form(
+              key: _formkey2,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.only(bottom: 20),
+                        child: Text(
+                          "Create a New Account",
+                          style: TextStyle(fontSize: 20),
+                        ),
                       ),
-                    ),
-                    // InputWithIcon(
-                    //   icon: Icons.email,
-                    //   hint: "Enter Email...",
-                    // ),
-                    // SizedBox(height: 20,),
-                    // InputWithIcon(
-                    //   icon: Icons.vpn_key,
-                    //   hint: "Enter Password...",
-                    // )
-                  ],
-                ),
-                Container(
-                  child: Column(children: [
-                    MaterialButton(
-                      onPressed: () {
-                        context.read<AuthenticationService>().signIn(
-                              email: emailController.text.trim(),
-                              password: passwordController.text.trim(),
-                            );
-                      },
-                      child: Container(
-                        height: 62.4,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(9.6),
-                            color: Color(0xFF000000)),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Padding(
-                            padding: EdgeInsets.only(left: 28.8, right: 28.8),
-                            child: Text(
-                              'Create Account',
-                              style: GoogleFonts.lato(
-                                  fontSize: 19.2,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.white),
+                      TextFormField(
+                        keyboardType: TextInputType.emailAddress,
+                        textAlign: TextAlign.center,
+                        decoration: new InputDecoration(
+                            hintText: "Email",
+                            contentPadding: const EdgeInsets.all(20.0)),
+                        controller: emailController,
+                        validator: (String value) {
+                          if (value.isEmpty) {
+                            return 'Please Enter an Email';
+                          }
+                          return null;
+                        },
+                      ),
+                      TextFormField(
+                        autofocus: false,
+                        obscureText: true,
+                        textAlign: TextAlign.center,
+                        controller: passwordController,
+                        decoration: new InputDecoration(
+                            hintText: "Password",
+                            contentPadding: const EdgeInsets.all(20.0)),
+                        validator: (String value) {
+                          if (value.isEmpty) {
+                            return 'Please Enter a Password';
+                          }
+                          if (value.length < 6) {
+                            return 'Please more than 6 characters';
+                          }
+                          return null;
+                        },
+                      ),
+                      TextFormField(
+                        autofocus: false,
+                        obscureText: true,
+                        textAlign: TextAlign.center,
+                        controller: passwordController2,
+                        decoration: new InputDecoration(
+                            hintText: "Confirm Password",
+                            contentPadding: const EdgeInsets.all(20.0)),
+                        validator: (String value) {
+                          if (value.isEmpty) {
+                            return 'Please re-enter password';
+                          }
+                          if (passwordController.text !=
+                              passwordController2.text) {
+                            return "Password does not match";
+                          }
+                          return null;
+                        },
+                      ),
+                      // InputWithIcon(
+                      //   icon: Icons.email,
+                      //   hint: "Enter Email...",
+                      // ),
+                      // SizedBox(height: 20,),
+                      // InputWithIcon(
+                      //   icon: Icons.vpn_key,
+                      //   hint: "Enter Password...",
+                      // )
+                    ],
+                  ),
+                  Container(
+                    child: Column(children: [
+                      MaterialButton(
+                        onPressed: () {
+                          if (_formkey2.currentState.validate() &&
+                              passwordController.text.trim() ==
+                                  passwordController2.text.trim()) {
+                            context.read<AuthenticationService>().signUp(
+                                  email: emailController.text.trim(),
+                                  password: passwordController.text.trim(),
+                                );
+                          } else {
+                            print("UnSuccessfull");
+                          }
+                        },
+                        child: Container(
+                          height: 62.4,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(9.6),
+                              color: Color(0xFF000000)),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Padding(
+                              padding: EdgeInsets.only(left: 28.8, right: 28.8),
+                              child: Text(
+                                'Create Account',
+                                style: GoogleFonts.lato(
+                                    fontSize: 19.2,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.white),
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    MaterialButton(
-                      onPressed: () {
-                        setState(() {
-                          _pageState = 1;
-                        });
-                      },
-                      child: Container(
-                        height: 62.4,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(9.6),
-                            color: Colors.white),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Padding(
-                            padding: EdgeInsets.only(left: 28.8, right: 28.8),
-                            child: Text(
-                              'Back to Login',
-                              style: GoogleFonts.lato(
-                                  fontSize: 19.2,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.black),
+                      MaterialButton(
+                        onPressed: () {
+                          setState(() {
+                            _pageState = 1;
+                          });
+                        },
+                        child: Container(
+                          height: 62.4,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(9.6),
+                              color: Colors.white),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Padding(
+                              padding: EdgeInsets.only(left: 28.8, right: 28.8),
+                              child: Text(
+                                'Back to Login',
+                                style: GoogleFonts.lato(
+                                    fontSize: 19.2,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.black),
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ]),
-                ),
-              ],
+                    ]),
+                  ),
+                ],
+              ),
             ),
           )
         ],

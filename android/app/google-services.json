@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "877762384475",
-    "project_id": "tripyojana",
-    "storage_bucket": "tripyojana.appspot.com"
+    "project_number": "762289931580",
+    "project_id": "goaround-b5b2b",
+    "storage_bucket": "goaround-b5b2b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:877762384475:android:62c5dbf3b6e351d61fa57e",
+        "mobilesdk_app_id": "1:762289931580:android:fbc52cad53150a89ebca39",
         "android_client_info": {
-          "package_name": "com.nova.tripyojana"
+          "package_name": "com.goaround.goaroundapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "877762384475-ego1bivlocmmtmkpbthv11ng7qv431i5.apps.googleusercontent.com",
+          "client_id": "762289931580-moq9cfrhnpoifo85nbrsplsj7rnj1vir.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.goaround.goaroundapp",
+            "certificate_hash": "99fb8ea29e0b6a6cc3d85ed5ae5b6c74e0e9f0c1"
+          }
+        },
+        {
+          "client_id": "762289931580-lvo99lkr3imkoltqsq7mvn9t7v064oi3.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA-HBA9sxcvWHidwBoamAqtjpi9ufxxQAs"
+          "current_key": "AIzaSyDvTAnSStk_bDXo_C2ppOmssozSofTFPGQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "877762384475-ego1bivlocmmtmkpbthv11ng7qv431i5.apps.googleusercontent.com",
+              "client_id": "762289931580-lvo99lkr3imkoltqsq7mvn9t7v064oi3.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
