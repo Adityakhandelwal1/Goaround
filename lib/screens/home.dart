@@ -179,9 +179,9 @@ class _NestedTabBarState extends State<Home> with TickerProviderStateMixin {
 
                             image: CachedNetworkImageProvider(
                                 recommendations[index].image),
-                              // recommendationList[index]['image']),
+                            // recommendationList[index]['image']),
 
-                              // recommendationList[index].image),
+                            // recommendationList[index].image),
                           ),
                         ),
                         child: Stack(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tripyojana/screens/home.dart';
+import 'package:tripyojana/screens/profile_screen.dart';
 import 'package:tripyojana/utils/authentication_service.dart';
 import 'package:provider/provider.dart';
 
@@ -80,39 +81,18 @@ class _MyHomePageState extends State<HomeScreen> with TickerProviderStateMixin {
       ),
       body: TabBarView(
         children: <Widget>[
+          //Home Screen
           Home(),
-          // NestedTabBar(),
+          // Favourites
           Center(
             child: Text("Favourites"),
           ),
+          // Notifications
           Center(
             child: Text("Notifications"),
           ),
-//profile - sign out
-          MaterialButton(
-            onPressed: () {
-              context.read<AuthenticationService>().signOut();
-            },
-            child: Container(
-              height: 62.4,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(9.6),
-                  color: Colors.white),
-              child: Align(
-                alignment: Alignment.center,
-                child: Padding(
-                  padding: EdgeInsets.only(left: 28.8, right: 28.8),
-                  child: Text(
-                    'Sign out',
-                    style: GoogleFonts.lato(
-                        fontSize: 19.2,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.black),
-                  ),
-                ),
-              ),
-            ),
-          )
+          //profile - sign out
+          UserProfile()
         ],
         controller: _tabController,
       ),
