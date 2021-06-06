@@ -4,11 +4,16 @@ class ActivitiesModel {
   String image;
   List<String> images;
   String description;
-  int price;
+  String price;
 
   ActivitiesModel(this.name, this.tagLine, this.image, this.images,
       this.description, this.price);
 }
+
+List<ActivitiesModel> recentlyViewed = recommendationsData
+    .map((item) => ActivitiesModel(item['name'], item['tagLine'], item['image'],
+    item['images'], item['description'], item['price']))
+    .toList();
 
 List<ActivitiesModel> offBeatActivities = offBeatActivitiesData
     .map((item) => ActivitiesModel(item['name'], item['tagLine'], item['image'],
@@ -59,7 +64,7 @@ var touristAttractionData = [
       "https://cdn.pixabay.com/photo/2017/08/09/12/05/piaynemo-2614341_960_720.jpg"
     ],
     "description": "Sample description",
-    "price": 1000
+    "price": "200"
   }
 ];
 
@@ -77,7 +82,7 @@ var partiesData = [
       "https://cdn.pixabay.com/photo/2017/08/09/12/05/piaynemo-2614341_960_720.jpg"
     ],
     "description": "Sample description",
-    "price": 1000
+    "price": "400"
   }
 ];
 
@@ -94,7 +99,7 @@ var staycationData = [
       "https://cdn.pixabay.com/photo/2017/08/09/12/05/piaynemo-2614341_960_720.jpg"
     ],
     "description": "Sample description",
-    "price": 1000
+    "price": "300"
   }
 ];
 
@@ -112,7 +117,7 @@ var cafesData = [
       "https://cdn.pixabay.com/photo/2017/08/09/12/05/piaynemo-2614341_960_720.jpg"
     ],
     "description": "Sample description",
-    "price": 1000
+    "price": "900"
   }
 ];
 
@@ -130,7 +135,7 @@ var coWorkingSpaceData = [
       "https://cdn.pixabay.com/photo/2017/08/09/12/05/piaynemo-2614341_960_720.jpg"
     ],
     "description": "Sample description",
-    "price": 1000
+    "price": "250"
   }
 ];
 
@@ -148,7 +153,7 @@ var offBeatActivitiesData = [
       "https://cdn.pixabay.com/photo/2017/08/09/12/05/piaynemo-2614341_960_720.jpg"
     ],
     "description": "Sample description",
-    "price": 1000
+    "price": "800"
   },
   {
     "name": "Activity2 Location2, Goa",
@@ -163,7 +168,7 @@ var offBeatActivitiesData = [
       "https://images.unsplash.com/photo-1524675053444-52c3ca294ad2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
     ],
     "description": "Sample description",
-    "price": 1000
+    "price": "1000"
   }
 ];
 
@@ -181,7 +186,7 @@ var recommendationsData = [
       "https://cdn.pixabay.com/photo/2017/08/09/12/05/piaynemo-2614341_960_720.jpg"
     ],
     "description": "Sample description",
-    "price": 1000
+    "price": "Free"
   },
   {
     "name": "Activity2 Location2, Goa",
@@ -196,7 +201,7 @@ var recommendationsData = [
       "https://images.unsplash.com/photo-1524675053444-52c3ca294ad2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
     ],
     "description": "Sample description",
-    "price": 1000
+    "price": "300"
   },
   {
     "name": "Activity3 Location3, Goa",
@@ -210,8 +215,8 @@ var recommendationsData = [
       "https://images.unsplash.com/photo-1529680218503-29abd728bef5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=679&q=80",
       "https://images.unsplash.com/photo-1566559532512-004a6df74db5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80"
     ],
-    "description": "Sample description'",
-    "price": 1000
+    "description": "Sample description",
+    "price": "400"
   },
   {
     "name": "Activity4 Location4, Goa",
@@ -224,8 +229,8 @@ var recommendationsData = [
       "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1323&q=80",
       "https://images.unsplash.com/photo-1552550018-5253c1b171e1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
     ],
-    "description": "Sample description'",
-    "price": 1000
+    "description": "Sample description",
+    "price": "200"
   },
   {
     "name": "Activity5 Location5, Goa",
@@ -239,7 +244,7 @@ var recommendationsData = [
       "https://images.unsplash.com/photo-1555912881-1ecd82307e0e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
       "https://images.unsplash.com/photo-1499359875449-10bbeb21501e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
     ],
-    "description": "Sample description'",
-    "price": 1000
+    "description": "Sample description",
+    "price": "600"
   }
 ];

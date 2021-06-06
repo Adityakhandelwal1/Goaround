@@ -15,27 +15,33 @@ class SelectedPlaceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Container(
+        color: Colors.white,
         child: Stack(
           children: <Widget>[
             // PageView for Image
-            PageView(
-              controller: _pageController,
-              scrollDirection: Axis.horizontal,
-              children: List.generate(
-                activitiesModel.images.length,
-                (int index) => Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: CachedNetworkImageProvider(
-                          activitiesModel.images[index]),
+            Container(
+              height: screenHeight*0.5,
+              child: PageView(
+                controller: _pageController,
+                scrollDirection: Axis.horizontal,
+                children: List.generate(
+                  activitiesModel.images.length,
+                      (int index) => Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: CachedNetworkImageProvider(
+                            activitiesModel.images[index]),
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
+
 
             // Custom Button
             SafeArea(
@@ -50,28 +56,21 @@ class SelectedPlaceScreen extends StatelessWidget {
                         Navigator.of(context).pop();
                       },
                       child: Container(
-                        height: 57.6,
-                        width: 57.6,
-                        padding: EdgeInsets.all(18),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(9.6),
-                          color: Color(0x10000000),
+                        decoration: new BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
                         ),
-                        child:
-                            SvgPicture.asset('assets/svg/icon_left_arrow.svg'),
+                        padding: EdgeInsets.all(15),
+                        child: Icon(Icons.arrow_back_ios),
                       ),
                     ),
                     Container(
-                      height: 57.6,
-                      width: 57.6,
-                      padding: EdgeInsets.all(18),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(9.6),
-                        color: Color(0x10000000),
-                      ),
-                      child:
-                          SvgPicture.asset('assets/svg/icon_heart_colored.svg'),
-                    )
+                        decoration: new BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                        ),
+                        padding: EdgeInsets.all(18),
+                        child: Icon(Icons.favorite_outline))
                   ],
                 ),
               ),
@@ -90,8 +89,8 @@ class SelectedPlaceScreen extends StatelessWidget {
                       controller: _pageController,
                       count: activitiesModel.images.length,
                       effect: ExpandingDotsEffect(
-                          activeDotColor: Color(0xFFFFFFFF),
-                          dotColor: Color(0xFFababab),
+                          activeDotColor: Colors.black,
+                          dotColor: Colors.black,
                           dotHeight: 4.8,
                           dotWidth: 6,
                           spacing: 4.8),
@@ -101,10 +100,10 @@ class SelectedPlaceScreen extends StatelessWidget {
                       child: Text(
                         activitiesModel.tagLine,
                         maxLines: 2,
-                        style: GoogleFonts.playfairDisplay(
+                        style: GoogleFonts.robotoCondensed(
                             fontSize: 42.6,
                             fontWeight: FontWeight.w700,
-                            color: Colors.white),
+                            color: Colors.black),
                       ),
                     ),
                     Padding(
@@ -112,10 +111,10 @@ class SelectedPlaceScreen extends StatelessWidget {
                       child: Text(
                         activitiesModel.description,
                         maxLines: 3,
-                        style: GoogleFonts.lato(
+                        style: GoogleFonts.robotoCondensed(
                             fontSize: 19.2,
                             fontWeight: FontWeight.w500,
-                            color: Colors.white),
+                            color: Colors.black),
                       ),
                     ),
                     SizedBox(
@@ -130,17 +129,17 @@ class SelectedPlaceScreen extends StatelessWidget {
                           children: <Widget>[
                             Text(
                               'Start from',
-                              style: GoogleFonts.lato(
+                              style: GoogleFonts.robotoCondensed(
                                   fontSize: 16.8,
                                   fontWeight: FontWeight.w500,
-                                  color: Colors.white),
+                                  color: Colors.black),
                             ),
                             Text(
-                              '\₹ ${activitiesModel.price.toString()} / person',
-                              style: GoogleFonts.lato(
+                              '\₹ ${activitiesModel.price}',
+                              style: GoogleFonts.robotoCondensed(
                                   fontSize: 21.6,
                                   fontWeight: FontWeight.w700,
-                                  color: Colors.white),
+                                  color: Colors.black),
                             )
                           ],
                         ),
@@ -148,17 +147,22 @@ class SelectedPlaceScreen extends StatelessWidget {
                           height: 62.4,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(9.6),
-                              color: Colors.white),
+                              color: Colors.black),
                           child: Align(
                             alignment: Alignment.center,
                             child: Padding(
-                              padding: EdgeInsets.only(left: 28.8, right: 28.8),
-                              child: Text(
-                                'Explore Now >>',
-                                style: GoogleFonts.lato(
-                                    fontSize: 19.2,
-                                    fontWeight: FontWeight.w700,
-                                    color: Colors.black),
+                              padding: EdgeInsets.only(left: 20.8, right: 20.8),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    'Add to Cart  ',
+                                    style: GoogleFonts.robotoCondensed(
+                                        fontSize: 19.2,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.white),
+                                  ),
+                                  // Icon(Icons.shopping_basket_outlined),
+                                ],
                               ),
                             ),
                           ),

@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:tripyojana/screens/home.dart';
-import 'package:tripyojana/screens/profile_screen.dart';
-import 'package:tripyojana/utils/authentication_service.dart';
-import 'package:provider/provider.dart';
-
-import 'nestedTabBarView.dart';
+import 'package:tripyojana/screens/home/home.dart';
+import 'package:tripyojana/screens/profile/profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override

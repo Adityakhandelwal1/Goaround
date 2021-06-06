@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:keyboard_visibility/keyboard_visibility.dart';
 import 'package:tripyojana/utils/authentication_service.dart';
@@ -10,6 +11,11 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  // final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+  // final GlobalKey<FormState> _formkey2 = GlobalKey<FormState>();
+  static final _formkey = GlobalKey<FormState>();
+  static final _formkey2 = GlobalKey<FormState>();
+
   int _pageState = 0;
 
   var _backgroundColor = Colors.white;
@@ -50,8 +56,6 @@ class _LoginPageState extends State<LoginPage> {
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
     final TextEditingController passwordController2 = TextEditingController();
-    final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
-    final GlobalKey<FormState> _formkey2 = GlobalKey<FormState>();
 
     windowHeight = MediaQuery.of(context).size.height;
     windowWidth = MediaQuery.of(context).size.width;
@@ -198,7 +202,7 @@ class _LoginPageState extends State<LoginPage> {
                           height: 30,
                         ),
                         TextFormField(
-                          keyboardType: TextInputType.text,
+                          // keyboardType: TextInputType.text,
                           textAlign: TextAlign.center,
                           decoration: new InputDecoration(
                               hintText: "Email",
@@ -212,14 +216,14 @@ class _LoginPageState extends State<LoginPage> {
                           },
                         ),
                         TextFormField(
-                          keyboardType: TextInputType.text,
-                          autofocus: false,
+                          // keyboardType: TextInputType.text,
+                          // autofocus: false,
                           obscureText: true,
                           textAlign: TextAlign.center,
-                          controller: passwordController,
                           decoration: new InputDecoration(
                               hintText: "Password",
                               contentPadding: const EdgeInsets.all(20.0)),
+                          controller: passwordController,
                           validator: (String value) {
                             if (value.isEmpty) {
                               return 'Please Enter a Password';
@@ -331,6 +335,82 @@ class _LoginPageState extends State<LoginPage> {
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(25),
                     topRight: Radius.circular(25))),
+
+            // child: Column(
+            //   children: [
+            //     SizedBox(height: SizeConfig.screenHeight * 0.04),
+            //     Text(
+            //       "Welcome Back",
+            //       style: TextStyle(
+            //         color: Colors.black,
+            //         fontSize: getProportionateScreenWidth(28),
+            //         fontWeight: FontWeight.bold,
+            //       ),
+            //     ),
+            //     Text(
+            //       "Sign in with your email and password  \nor continue with social media",
+            //       textAlign: TextAlign.center,
+            //     ),
+            //     SizedBox(height: SizeConfig.screenHeight * 0.08),
+            //     // SignForm(),
+            //     SizedBox(height: SizeConfig.screenHeight * 0.08),
+            //     Row(
+            //       mainAxisAlignment: MainAxisAlignment.center,
+            //       children: [
+            //         GestureDetector(
+            //           onTap: () {},
+            //           child: Container(
+            //             margin: EdgeInsets.symmetric(
+            //                 horizontal: getProportionateScreenWidth(10)),
+            //             padding:
+            //                 EdgeInsets.all(getProportionateScreenWidth(12)),
+            //             height: getProportionateScreenHeight(40),
+            //             width: getProportionateScreenWidth(40),
+            //             decoration: BoxDecoration(
+            //               color: Color(0xFFF5F6F9),
+            //               shape: BoxShape.circle,
+            //             ),
+            //             child: SvgPicture.asset("assets/svg/google-icon.svg"),
+            //           ),
+            //         ),
+            //         GestureDetector(
+            //           onTap: () {},
+            //           child: Container(
+            //             margin: EdgeInsets.symmetric(
+            //                 horizontal: getProportionateScreenWidth(10)),
+            //             padding:
+            //                 EdgeInsets.all(getProportionateScreenWidth(12)),
+            //             height: getProportionateScreenHeight(40),
+            //             width: getProportionateScreenWidth(40),
+            //             decoration: BoxDecoration(
+            //               color: Color(0xFFF5F6F9),
+            //               shape: BoxShape.circle,
+            //             ),
+            //             child: SvgPicture.asset("assets/svg/twitter.svg"),
+            //           ),
+            //         ),
+            //         GestureDetector(
+            //           onTap: () {},
+            //           child: Container(
+            //             margin: EdgeInsets.symmetric(
+            //                 horizontal: getProportionateScreenWidth(10)),
+            //             padding:
+            //                 EdgeInsets.all(getProportionateScreenWidth(12)),
+            //             height: getProportionateScreenHeight(40),
+            //             width: getProportionateScreenWidth(40),
+            //             decoration: BoxDecoration(
+            //               color: Color(0xFFF5F6F9),
+            //               shape: BoxShape.circle,
+            //             ),
+            //             child: SvgPicture.asset("assets/svg/facebook-2.svg"),
+            //           ),
+            //         ),
+            //       ],
+            //     ),
+            //     SizedBox(height: getProportionateScreenHeight(20)),
+            //   ],
+            // ),
+
             child: Form(
               key: _formkey2,
               child: Column(
@@ -419,7 +499,7 @@ class _LoginPageState extends State<LoginPage> {
                                   password: passwordController.text.trim(),
                                 );
                           } else {
-                            print("UnSuccessfull");
+                            print("UnSuccessful");
                           }
                         },
                         child: Container(
