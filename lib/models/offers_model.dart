@@ -16,4 +16,8 @@ var beachesData = [
     "image":
     "assets/images/background.jpeg"
   },
+  {
+    "image":
+    "assets/images/pic.jpeg"
+  },
 ];

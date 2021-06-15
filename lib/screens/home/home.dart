@@ -61,7 +61,7 @@ class _NestedTabBarState extends State<Home> with TickerProviderStateMixin {
                 padding: EdgeInsets.all(18),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(9.6),
-                  color: Color(0x080a0928),
+                  color: Colors.transparent,
                 ),
                 child: SvgPicture.asset('assets/svg/icon_search.svg'),
               )
@@ -112,7 +112,7 @@ class _NestedTabBarState extends State<Home> with TickerProviderStateMixin {
               unselectedLabelStyle:
                   GoogleFonts.lato(fontSize: 14, fontWeight: FontWeight.w700),
               indicatorWeight: 1.4,
-              // indicatorSize: TabBarIndicatorSize.label,
+              indicatorSize: TabBarIndicatorSize.label,
               controller: _nestedTabController,
               indicatorColor: Colors.black,
               tabs: <Widget>[
@@ -195,7 +195,7 @@ class _NestedTabBarState extends State<Home> with TickerProviderStateMixin {
 
         // Dots Indicator
         // Using SmoothPageIndicator Library
-        Padding(
+        Padding( 
           padding: EdgeInsets.only(left: 28.8, top: 28.8),
           child: SmoothPageIndicator(
             controller: _pageController,
