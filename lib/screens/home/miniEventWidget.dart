@@ -52,7 +52,9 @@ class MiniEventWidget extends StatelessWidget {
                     ],
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(12),
-                        bottomRight: Radius.circular(12)),
+                        bottomRight: Radius.circular(12),
+                        topRight: Radius.circular(12),
+                        bottomLeft: Radius.circular(12)),
                     color: Colors.white),
                 child: SingleChildScrollView(
                   child: Column(
@@ -60,8 +62,9 @@ class MiniEventWidget extends StatelessWidget {
                       Container(
                         height: screenHeight * 0.135,
                         decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.only(topLeft: Radius.circular(12)),
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(12),
+                              topRight: Radius.circular(12)),
                           image: DecorationImage(
                             fit: BoxFit.cover,
                             image:
@@ -70,8 +73,7 @@ class MiniEventWidget extends StatelessWidget {
                         ),
                       ),
                       ListTile(
-                        subtitle: Text(
-                            '\₹ ${event[index].price}',
+                        subtitle: Text('\₹ ${event[index].price}',
                             style: GoogleFonts.lato(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w600,

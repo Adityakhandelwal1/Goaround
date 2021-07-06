@@ -239,14 +239,16 @@ class _LoginPageState extends State<LoginPage> {
                       child: Column(children: [
                         MaterialButton(
                           onPressed: () {
-                            if (_formkey.currentState.validate()) {
+                            // if (_formkey.currentState.validate()) {
                               context.read<AuthenticationService>().signIn(
-                                    email: emailController.text.trim(),
-                                    password: passwordController.text.trim(),
+                                email: "test@gmail.com",
+                                    password: "123456"
+                                    // email: emailController.text.trim(),
+                                    // password: passwordController.text.trim(),
                                   );
-                            } else {
-                              print("UnSuccessfull");
-                            }
+                            // } else {
+                            //   print("UnSuccessfull");
+                            // }
                           },
                           child: Container(
                             height: 62.4,

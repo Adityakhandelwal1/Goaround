@@ -2,7 +2,7 @@ class ActivitiesModel {
   String name;
   String tagLine;
   String image;
-  List<String> images;
+  List<dynamic> images;
   String description;
   String price;
 
