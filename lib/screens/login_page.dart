@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:keyboard_visibility/keyboard_visibility.dart';
 import 'package:tripyojana/utils/authentication_service.dart';
 import 'package:provider/provider.dart';
+import 'package:tripyojana/utils/googleSignInProvider.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -231,24 +233,44 @@ class _LoginPageState extends State<LoginPage> {
                             return null;
                           },
                         ),
+
+
+
                       ],
                     ),
 
                     //SignIn and Create New Account button
                     Container(
                       child: Column(children: [
+                        //Google Sign in Button
                         MaterialButton(
                           onPressed: () {
-                            // if (_formkey.currentState.validate()) {
+                            final provider = Provider.of<GoogleSignInProvider>(context, listen: false);
+                            provider.googleLogin();
+                          },
+                          child: Container(
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Padding(
+                                padding:
+                                EdgeInsets.only(left: 28.8, right: 28.8),
+                                child:Icon(FontAwesomeIcons.google, color: Colors.red),
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        //Sign in button
+                        MaterialButton(
+                          onPressed: () {
+                            if (_formkey.currentState.validate()) {
                               context.read<AuthenticationService>().signIn(
-                                email: "test@gmail.com",
-                                    password: "123456"
-                                    // email: emailController.text.trim(),
-                                    // password: passwordController.text.trim(),
+                                    email: emailController.text.trim(),
+                                    password: passwordController.text.trim(),
                                   );
-                            // } else {
-                            //   print("UnSuccessfull");
-                            // }
+                            } else {
+                              print("UnSuccessfull");
+                            }
                           },
                           child: Container(
                             height: 62.4,
@@ -272,6 +294,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                         ),
+                        //New Account Button
                         MaterialButton(
                           onPressed: () {
                             setState(() {

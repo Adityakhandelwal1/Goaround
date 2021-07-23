@@ -20,14 +20,15 @@ class ProfileWidget extends StatelessWidget {
       child: FlatButton(
         padding: EdgeInsets.all(20),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        color: Color(0xFFF5F6F9),
+        // color: Color(0xFFF5F6F9),
+        color: Colors.white,
         onPressed: press,
         child: Row(
           children: [
             icon,
             SizedBox(width: 20),
             Expanded(child: Text(text)),
-            Icon(Icons.arrow_forward_ios),
+            // Icon(Icons.arrow_forward_ios),
           ],
         ),
       ),
