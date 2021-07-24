@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:tripyojana/models/activities_model.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tripyojana/models/activities_model.dart';
 
 import 'cartItem.dart';
 

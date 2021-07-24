@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tripyojana/models/activities_model.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../selected_place_screen.dart';
 

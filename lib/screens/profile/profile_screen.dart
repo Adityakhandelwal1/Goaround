@@ -1,11 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:tripyojana/screens/profile/profileWidget.dart';
 import 'package:tripyojana/utils/authentication_service.dart';
-import 'package:provider/provider.dart';
 
 class UserProfile extends StatefulWidget {
   @override
@@ -51,8 +50,10 @@ class _NestedTabBarState extends State<UserProfile>
               // fit: StackFit.expand,
               // overflow: Overflow.visible,
               children: [
-                Text(user.displayName),
-                Text(user.email),
+                // TODO: Add Check here
+
+                Text(user?.displayName??""),
+                Text(user?.email??""),
                     // Icon(Icons.arrow_forward_ios),
 
                 //Profile Picture
