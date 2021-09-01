@@ -50,8 +50,6 @@ class _NestedTabBarState extends State<UserProfile>
               // fit: StackFit.expand,
               // overflow: Overflow.visible,
               children: [
-                // TODO: Add Check here
-
                 Text(user?.displayName??""),
                 Text(user?.email??""),
                     // Icon(Icons.arrow_forward_ios),

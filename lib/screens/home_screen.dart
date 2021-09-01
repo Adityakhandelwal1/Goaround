@@ -7,7 +7,9 @@ class HomeScreen extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
-
+// TODO:
+//2 liner for splash screen
+//Element's size percentage
 class _MyHomePageState extends State<HomeScreen> with TickerProviderStateMixin {
   TabController _tabController;
   int _selectedIndex = 0;

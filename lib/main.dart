@@ -7,6 +7,7 @@ import 'package:tripyojana/screens/login_page.dart';
 import 'package:tripyojana/utils/authentication_service.dart';
 
 Future<void> main() async {
+  Provider.debugCheckInvalidValueType = null;
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());

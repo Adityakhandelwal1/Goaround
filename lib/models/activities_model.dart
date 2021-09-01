@@ -10,47 +10,27 @@ class ActivitiesModel {
       this.description, this.price);
 }
 
-List<ActivitiesModel> recentlyViewed = recommendationsData
-    .map((item) => ActivitiesModel(item['name'], item['tagLine'], item['image'],
-    item['images'], item['description'], item['price']))
-    .toList();
-
-List<ActivitiesModel> offBeatActivities = offBeatActivitiesData
-    .map((item) => ActivitiesModel(item['name'], item['tagLine'], item['image'],
-        item['images'], item['description'], item['price']))
-    .toList();
-
 List<ActivitiesModel> recommendations = recommendationsData
     .map((item) => ActivitiesModel(item['name'], item['tagLine'], item['image'],
         item['images'], item['description'], item['price']))
     .toList();
 
-List<ActivitiesModel> coWorkingSpace = coWorkingSpaceData
+List<ActivitiesModel> accommodations = accommodationsData
+    .map((item) => ActivitiesModel(item['name'], item['tagLine'], item['image'],
+    item['images'], item['description'], item['price']))
+    .toList();
+
+List<ActivitiesModel> explore = exploreData
     .map((item) => ActivitiesModel(item['name'], item['tagLine'], item['image'],
         item['images'], item['description'], item['price']))
     .toList();
 
-List<ActivitiesModel> staycation = staycationData
+List<ActivitiesModel> events = eventsData
     .map((item) => ActivitiesModel(item['name'], item['tagLine'], item['image'],
         item['images'], item['description'], item['price']))
     .toList();
 
-List<ActivitiesModel> touristAttraction = touristAttractionData
-    .map((item) => ActivitiesModel(item['name'], item['tagLine'], item['image'],
-        item['images'], item['description'], item['price']))
-    .toList();
-
-List<ActivitiesModel> parties = partiesData
-    .map((item) => ActivitiesModel(item['name'], item['tagLine'], item['image'],
-        item['images'], item['description'], item['price']))
-    .toList();
-
-List<ActivitiesModel> cafes = cafesData
-    .map((item) => ActivitiesModel(item['name'], item['tagLine'], item['image'],
-        item['images'], item['description'], item['price']))
-    .toList();
-
-var touristAttractionData = [
+var accommodationsData = [
   {
     "name": "Activity1 Location1, Goa",
     "tagLine": "Activity1 Location1, Goa",
@@ -68,7 +48,7 @@ var touristAttractionData = [
   }
 ];
 
-var partiesData = [
+var exploreData = [
   {
     "name": "Activity1 Location1, Goa",
     "tagLine": "Activity1 Location1, Goa",
@@ -86,7 +66,7 @@ var partiesData = [
   }
 ];
 
-var staycationData = [
+var eventsData = [
   {
     "name": "Activity1 Location1, Goa",
     "tagLine": "Activity1 Location1, Goa",
@@ -100,75 +80,6 @@ var staycationData = [
     ],
     "description": "Sample description",
     "price": "300"
-  }
-];
-
-var cafesData = [
-  {
-    "name": "Activity1 Location1, Goa",
-    "tagLine": "Activity1 Location1, Goa",
-    "image":
-        "https://cdn.pixabay.com/photo/2017/08/09/12/05/piaynemo-2614341_960_720.jpg",
-    "images": [
-      "https://images.pexels.com/photos/2583852/pexels-photo-2583852.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-      "https://images.unsplash.com/photo-1570789210967-2cac24afeb00?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
-      "https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
-      "https://live.staticflickr.com/1449/23852180634_54f8aa0404_b.jpg",
-      "https://cdn.pixabay.com/photo/2017/08/09/12/05/piaynemo-2614341_960_720.jpg"
-    ],
-    "description": "Sample description",
-    "price": "900"
-  }
-];
-
-var coWorkingSpaceData = [
-  {
-    "name": "Activity1 Location1, Goa",
-    "tagLine": "Activity1 Location1, Goa",
-    "image":
-        "https://images.pexels.com/photos/2583852/pexels-photo-2583852.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-    "images": [
-      "https://images.pexels.com/photos/2583852/pexels-photo-2583852.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-      "https://images.unsplash.com/photo-1570789210967-2cac24afeb00?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
-      "https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
-      "https://live.staticflickr.com/1449/23852180634_54f8aa0404_b.jpg",
-      "https://cdn.pixabay.com/photo/2017/08/09/12/05/piaynemo-2614341_960_720.jpg"
-    ],
-    "description": "Sample description",
-    "price": "250"
-  }
-];
-
-var offBeatActivitiesData = [
-  {
-    "name": "Activity1 Location1, Goa",
-    "tagLine": "Activity1 Location1, Goa",
-    "image":
-        "https://images.unsplash.com/photo-1539367628448-4bc5c9d171c8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1539367628448-4bc5c9d171c8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80",
-      "https://images.unsplash.com/photo-1570789210967-2cac24afeb00?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
-      "https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
-      "https://live.staticflickr.com/1449/23852180634_54f8aa0404_b.jpg",
-      "https://cdn.pixabay.com/photo/2017/08/09/12/05/piaynemo-2614341_960_720.jpg"
-    ],
-    "description": "Sample description",
-    "price": "800"
-  },
-  {
-    "name": "Activity2 Location2, Goa",
-    "tagLine": "Activity2 Location2, Goa",
-    "image":
-        "https://images.unsplash.com/photo-1542897644-e04428948020?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=564&q=80",
-    "images": [
-      "https://images.pexels.com/photos/2583852/pexels-photo-2583852.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-      "https://images.unsplash.com/photo-1542897644-e04428948020?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=564&q=80",
-      "https://images.unsplash.com/photo-1546845776-dcdf70fd09e3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
-      "https://images.unsplash.com/photo-1517480448885-d5c53555ba8c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1034&q=80",
-      "https://images.unsplash.com/photo-1524675053444-52c3ca294ad2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
-    ],
-    "description": "Sample description",
-    "price": "1000"
   }
 ];
 

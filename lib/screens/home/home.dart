@@ -22,7 +22,7 @@ class _NestedTabBarState extends State<Home> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _nestedTabController = new TabController(length: 7, vsync: this);
+    _nestedTabController = new TabController(length: 4, vsync: this);
   }
 
   @override
@@ -121,22 +121,13 @@ class _NestedTabBarState extends State<Home> with TickerProviderStateMixin {
                   text: "Recommended",
                 ),
                 Tab(
-                  text: "Off Beat Activities",
+                  text: "Accommodations",
                 ),
                 Tab(
-                  text: "Co-Working Space",
+                  text: "Explore",
                 ),
                 Tab(
-                  text: "Staycation",
-                ),
-                Tab(
-                  text: "Tourist Attraction",
-                ),
-                Tab(
-                  text: "Party",
-                ),
-                Tab(
-                  text: "Cafes",
+                  text: "Events",
                 ),
               ],
             ),
@@ -155,40 +146,22 @@ class _NestedTabBarState extends State<Home> with TickerProviderStateMixin {
                 event: recommendations,
               ),
 
-              // Off Beat Activities
+              // Accommodations
               EventWidget(
                 pageController: _pageController,
-                event: offBeatActivities,
+                event: accommodations,
               ),
 
-              //Co-Working Space
+              //Explore
               EventWidget(
                 pageController: _pageController,
-                event: coWorkingSpace,
+                event: explore,
               ),
 
-              //Staycation
+              //Events
               EventWidget(
                 pageController: _pageController,
-                event: staycation,
-              ),
-
-              //Tourist Attraction
-              EventWidget(
-                pageController: _pageController,
-                event: touristAttraction,
-              ),
-
-              //Party
-              EventWidget(
-                pageController: _pageController,
-                event: parties,
-              ),
-
-              //Cafes
-              EventWidget(
-                pageController: _pageController,
-                event: cafes,
+                event: events,
               ),
             ],
           ),
@@ -278,7 +251,7 @@ class _NestedTabBarState extends State<Home> with TickerProviderStateMixin {
           height: screenHeight * 0.215,
           margin: EdgeInsets.only(left: screenWidth * 0.05, right: 12.0),
           child: MiniEventWidget(
-              pageController: _pageController, event: offBeatActivities),
+              pageController: _pageController, event: events),
         ),
 
         // Text Widget for Parties
@@ -313,7 +286,7 @@ class _NestedTabBarState extends State<Home> with TickerProviderStateMixin {
           height: screenHeight * 0.215,
           margin: EdgeInsets.only(left: screenWidth * 0.05, right: 12.0),
           child:
-              MiniEventWidget(pageController: _pageController, event: parties),
+              MiniEventWidget(pageController: _pageController, event: events),
         ),
         SizedBox(height: screenHeight * 0.02),
       ],
