@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tripyojana/screens/home_screen.dart';
 import 'package:tripyojana/screens/login_page.dart';
+import 'package:tripyojana/screens/splash.dart';
 import 'package:tripyojana/utils/authentication_service.dart';
 
 Future<void> main() async {
@@ -34,21 +35,22 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: AuthenticationWrapper(),
+        // home: AuthenticationWrapper(),
+        home: Splash(),
       ),
     );
   }
 }
 
-class AuthenticationWrapper extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final firebaseUser = context.watch<User>();
-
-    if (firebaseUser != null) {
-      return HomeScreen();
-    }
-    // return SignInPage();
-    return LoginPage();
-  }
-}
+// class AuthenticationWrapper extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     final firebaseUser = context.watch<User>();
+//
+//     if (firebaseUser != null) {
+//       return HomeScreen();
+//     }
+//     // return SignInPage();
+//     return LoginPage();
+//   }
+// }

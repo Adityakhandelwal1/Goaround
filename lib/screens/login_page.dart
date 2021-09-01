@@ -11,6 +11,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  bool missionVisionLabel = true;
   // final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   // final GlobalKey<FormState> _formkey2 = GlobalKey<FormState>();
   static final _formkey = GlobalKey<FormState>();
@@ -53,6 +54,8 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
     final TextEditingController passwordController2 = TextEditingController();
@@ -113,63 +116,148 @@ class _LoginPageState extends State<LoginPage> {
     }
 
     return Scaffold(
+      backgroundColor: Color.fromRGBO(240, 228, 222, 1),
       body: Stack(
         children: <Widget>[
+          Container(
+            padding: EdgeInsets.only(left: screenWidth * 0.08, top: screenWidth * 0.12),
+            child: CircleAvatar(
+              radius: screenHeight * 0.06,
+              backgroundColor: Color.fromRGBO(140, 189, 208, 1),
+            ),
+          ),
           //Welcome page
           Container(
-              decoration: new BoxDecoration(
-                image: new DecorationImage(
-                  image: new AssetImage('assets/images/background.jpeg'),
-                  colorFilter: new ColorFilter.mode(
-                      Colors.black.withOpacity(0.2), BlendMode.dstATop),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              // color: _backgroundColor,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(top: 100),
-                    child: Text(
-                      'Welcome!',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.lato(
-                          fontSize: 45.6,
-                          color: _headingColor,
-                          fontWeight: FontWeight.w400),
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              // 2 liner about the brand
+              Visibility(
+                visible: missionVisionLabel,
+                child: Center(
+                  child: Container(
+                    padding: EdgeInsets.all(screenHeight * 0.06),
+                    alignment: AlignmentDirectional(0.0, 0.0),
+                    child: Container(
+                      padding: EdgeInsets.all(screenHeight * 0.04),
+                      color: Color.fromRGBO(248, 242, 239, 1),
+                      child: Text("2 liner about the brand",
+                          style: GoogleFonts.lato(
+                              fontSize: 19.2,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black)),
                     ),
                   ),
-                  //Get Started Button
-                  Container(
-                    child: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          if (_pageState != 0) {
-                            _pageState = 0;
-                          } else {
-                            _pageState = 1;
-                          }
-                        });
-                      },
-                      child: Container(
-                        margin: EdgeInsets.all(32),
-                        padding: EdgeInsets.all(20),
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                            color: Color(0xFF000000),
-                            borderRadius: BorderRadius.circular(50)),
-                        child: Center(
-                          child: Text(
-                            "Get Started",
-                            style: TextStyle(color: Colors.white, fontSize: 16),
+                ),
+              ),
+
+              //Sign In Methods
+              Container(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      //Google Sign in Button
+                      MaterialButton(
+                        padding: EdgeInsets.only(
+                            left: screenHeight * 0.025,
+                            right: screenHeight * 0.025,
+                            top: screenHeight * 0.025),
+                        onPressed: () {
+                          final provider = Provider.of<AuthenticationService>(
+                              context,
+                              listen: false);
+                          provider.googleLogin();
+                        },
+                        child: Container(
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                  left: screenWidth * 0.1,
+                                  right: screenWidth * 0.1),
+                              child: Icon(FontAwesomeIcons.google,
+                                  color: Colors.red),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  )
-                ],
-              )),
+                      //Sign in button
+                      MaterialButton(
+                        padding: EdgeInsets.only(
+                            left: screenHeight * 0.025,
+                            right: screenHeight * 0.025,
+                            top: screenHeight * 0.025),
+                        onPressed: () {
+                          missionVisionLabel = false;
+                          setState(() {
+                            if (_pageState != 0) {
+                              _pageState = 0;
+                            } else {
+                              _pageState = 1;
+                            }
+                          });
+                        },
+                        child: Container(
+                          height: screenHeight * 0.07,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(9.6),
+                            color: Colors.white,
+                          ),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                  left: screenWidth * 0.1,
+                                  right: screenWidth * 0.1),
+                              child: Text(
+                                'Sign in',
+                                style: GoogleFonts.lato(
+                                    fontSize: 19.2,
+                                    fontWeight: FontWeight.w700,
+                                    color: Color.fromRGBO(79, 91, 111, 1)),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      //New Account Button
+                      MaterialButton(
+                        padding: EdgeInsets.only(
+                            left: screenHeight * 0.025,
+                            right: screenHeight * 0.025,
+                            top: screenHeight * 0.025),
+                        onPressed: () {
+                          missionVisionLabel = false;
+                          setState(() {
+                            _pageState = 2;
+                          });
+                        },
+                        child: Container(
+                          height: screenHeight * 0.07,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(9.6),
+                              color: Colors.white),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                  left: screenWidth * 0.1,
+                                  right: screenWidth * 0.1),
+                              child: Text(
+                                'Create an account',
+                                style: GoogleFonts.lato(
+                                    fontSize: 19.2,
+                                    fontWeight: FontWeight.w700,
+                                    color: Color.fromRGBO(79, 91, 111, 1)),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ]),
+              ),
+            ],
+          )),
           //login page
           AnimatedContainer(
               padding: EdgeInsets.all(32),
@@ -180,7 +268,8 @@ class _LoginPageState extends State<LoginPage> {
               transform:
                   Matrix4.translationValues(_loginXOffset, _loginYOffset, 1),
               decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(_loginOpacity),
+                color: Color.fromRGBO(200, 212, 216, 1),
+                  // color: Colors.black.withOpacity(_loginOpacity),
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(25),
                       topRight: Radius.circular(25))),
@@ -239,6 +328,10 @@ class _LoginPageState extends State<LoginPage> {
                       child: Column(children: [
                         //Google Sign in Button
                         MaterialButton(
+                          padding: EdgeInsets.only(
+                              left: screenHeight * 0.025,
+                              right: screenHeight * 0.025,
+                              top: screenHeight * 0.025),
                           onPressed: () {
                             final provider = Provider.of<AuthenticationService>(
                                 context,
@@ -260,6 +353,10 @@ class _LoginPageState extends State<LoginPage> {
 
                         //Sign in button
                         MaterialButton(
+                          padding: EdgeInsets.only(
+                              left: screenHeight * 0.025,
+                              right: screenHeight * 0.025,
+                              top: screenHeight * 0.025),
                           onPressed: () {
                             if (_formkey.currentState.validate()) {
                               context.read<AuthenticationService>().signIn(
@@ -274,7 +371,7 @@ class _LoginPageState extends State<LoginPage> {
                             height: 62.4,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(9.6),
-                              color: Color(0xFF000000),
+                              color:Color.fromRGBO(235, 239, 240, 1)
                             ),
                             child: Align(
                               alignment: Alignment.center,
@@ -286,7 +383,7 @@ class _LoginPageState extends State<LoginPage> {
                                   style: GoogleFonts.lato(
                                       fontSize: 19.2,
                                       fontWeight: FontWeight.w700,
-                                      color: Colors.white),
+                                      color: Colors.black),
                                 ),
                               ),
                             ),
@@ -294,6 +391,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         //New Account Button
                         MaterialButton(
+                          padding: EdgeInsets.all(screenHeight * 0.025,),
                           onPressed: () {
                             setState(() {
                               _pageState = 2;
@@ -303,14 +401,14 @@ class _LoginPageState extends State<LoginPage> {
                             height: 62.4,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(9.6),
-                                color: Colors.white),
+                                color: Color.fromRGBO(235, 239, 240, 1)),
                             child: Align(
                               alignment: Alignment.center,
                               child: Padding(
                                 padding:
                                     EdgeInsets.only(left: 28.8, right: 28.8),
                                 child: Text(
-                                  'New Account?',
+                                  'Need an account? Sign up',
                                   style: GoogleFonts.lato(
                                       fontSize: 19.2,
                                       fontWeight: FontWeight.w700,
@@ -354,7 +452,7 @@ class _LoginPageState extends State<LoginPage> {
             duration: Duration(milliseconds: 1000),
             transform: Matrix4.translationValues(0, _registerYOffset, 1),
             decoration: BoxDecoration(
-                color: Colors.white,
+                color: Color.fromRGBO(200, 212, 216, 1),
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(25),
                     topRight: Radius.circular(25))),
@@ -513,6 +611,10 @@ class _LoginPageState extends State<LoginPage> {
                   Container(
                     child: Column(children: [
                       MaterialButton(
+                        padding: EdgeInsets.only(
+                            left: screenHeight * 0.025,
+                            right: screenHeight * 0.025,
+                            top: screenHeight * 0.025),
                         onPressed: () {
                           if (_formkey2.currentState.validate() &&
                               passwordController.text.trim() ==
@@ -529,7 +631,7 @@ class _LoginPageState extends State<LoginPage> {
                           height: 62.4,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(9.6),
-                              color: Color(0xFF000000)),
+                              color: Color.fromRGBO(235, 239, 240, 1)),
                           child: Align(
                             alignment: Alignment.center,
                             child: Padding(
@@ -539,13 +641,14 @@ class _LoginPageState extends State<LoginPage> {
                                 style: GoogleFonts.lato(
                                     fontSize: 19.2,
                                     fontWeight: FontWeight.w700,
-                                    color: Colors.white),
+                                    color: Colors.black),
                               ),
                             ),
                           ),
                         ),
                       ),
                       MaterialButton(
+                        padding: EdgeInsets.all(screenHeight * 0.025),
                         onPressed: () {
                           setState(() {
                             _pageState = 1;
@@ -555,13 +658,13 @@ class _LoginPageState extends State<LoginPage> {
                           height: 62.4,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(9.6),
-                              color: Colors.white),
+                              color: Color.fromRGBO(235, 239, 240, 1)),
                           child: Align(
                             alignment: Alignment.center,
                             child: Padding(
                               padding: EdgeInsets.only(left: 28.8, right: 28.8),
                               child: Text(
-                                'Back to Login',
+                                'Have an account? Login here',
                                 style: GoogleFonts.lato(
                                     fontSize: 19.2,
                                     fontWeight: FontWeight.w700,
